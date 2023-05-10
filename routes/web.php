@@ -31,6 +31,7 @@ Route::controller(CandidatoController::class)->group(function () {
     Route::get('/candidato/alta','alta');
     Route::get('/candidato/modificar','modificar');
     Route::get('/candidato/show','show');
+    Route::get('/candidato/consulta','consulta');
 });
 
 Route::controller(EmpresaController::class)->group(function () {

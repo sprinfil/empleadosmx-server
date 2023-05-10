@@ -60,6 +60,22 @@ class Candidato extends Model
         ->join('users','candidatos.user_id','=','users.id')->get()->take(20);
         return $candidatos;
     }
+    static function consulta($nombre,$especialidad,$correo){
+        /*SELECT nombre, especialidad,correo
+          FROM candidatos,users
+          WHERE candidatos.user_id = users.id and 
+          nombre LIKE 'j%' and correo LIKE '%' 
+          AND especialidad like '%'  
+        */
+
+        $candidatos = DB::select('SELECT nombre, especialidad,correo 
+        FROM candidatos,users
+        WHERE candidatos.user_id = users.id and 
+        nombre LIKE ?
+        and especialidad LIKE ?
+        and correo LIKE ?',[$nombre.'%',$especialidad.'%',$correo.'%']);
+        return $candidatos;
+    }
 }
 
 

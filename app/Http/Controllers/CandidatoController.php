@@ -35,4 +35,12 @@ class CandidatoController extends Controller
    public function show(){
       return Candidato::show();
    }
+
+   public function consulta(Request $request){
+      return Candidato::consulta(
+         $request->nombre,
+         $request->especialidad,
+         $request->correo
+      );
+   }
 }
