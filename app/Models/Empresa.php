@@ -28,4 +28,24 @@ class Empresa extends Model
                 $empresa->user_id = $user_id;
                 $empresa->save();
             }
+
+    static function modificar(
+        $user_id,
+        $nombre,
+        $calle,
+        $colonia,
+        $codigoPostal,
+        $descripcion,
+        $telefono
+    ){
+        $empresa = Empresa::where('user_id',$user_id)->get()->first();
+        $empresa->nombre = $nombre;
+        $empresa->calle = $calle ;
+        $empresa->colonia = $colonia;
+        $empresa->codigoPostal = $codigoPostal;
+        $empresa->descripcion = $descripcion;
+        $empresa->telefono = $telefono;
+        $empresa->save();
+    }
+
 }

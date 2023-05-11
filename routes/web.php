@@ -37,4 +37,5 @@ Route::controller(CandidatoController::class)->group(function () {
 Route::controller(EmpresaController::class)->group(function () {
     Route::get('/empresa/consulta_correo','consulta_correo');
     Route::get('/empresa/alta','alta');
+    Route::get('/empresa/modificar','modificar');
 });

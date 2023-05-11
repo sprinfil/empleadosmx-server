@@ -16,4 +16,16 @@ class EmpresaController extends Controller
      public function alta(Request $request){
         Empresa::alta($request->user_id);
      }
+
+     public function modificar(Request $request){
+      Empresa::modificar(
+         $request->user_id,
+         $request->nombre,
+         $request->calle,
+         $request->colonia,
+         $request->codigoPostal,
+         $request->descripcion,
+         $request->telefono
+      );
+     }
 }
