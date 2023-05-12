@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('titulo')->nullable();
             $table->date('fecha_creacion')->nullable();
-            $table->text('descripcion')->nullable();
+            $table->text('requisitos')->nullable();
+            $table->text('detalles_trabajo')->nullable();
             $table->unsignedInteger('salario')->nullable();
-
+            $table->text('informacion_adicional')->nullable();
+            
             $table->foreignId('empresa_id')->constrained();
             $table->timestamps();
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\CandidatoController;
 use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VacanteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,8 @@ Route::controller(EmpresaController::class)->group(function () {
     Route::get('/empresa/consulta_correo','consulta_correo');
     Route::get('/empresa/alta','alta');
     Route::get('/empresa/modificar','modificar');
+});
+
+Route::controller(VacanteController::class)->group(function () {
+    Route::get('/vacante/alta','alta');
 });
