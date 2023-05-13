@@ -17,7 +17,7 @@ class Candidato extends Model
     WHERE candidatos.user_id = users.id and correo = 'jeremy'
 */
         $candidato = DB::table('candidatos')
-       ->select('candidatos.fechaNac','candidatos.apellidoM','candidatos.apellidoP','candidatos.nombre','candidatos.telefono','candidatos.calle','candidatos.colonia','candidatos.codigoPostal','candidatos.especialidad','candidatos.user_id','users.correo')
+       ->select('candidatos.id','candidatos.fechaNac','candidatos.apellidoM','candidatos.apellidoP','candidatos.nombre','candidatos.telefono','candidatos.calle','candidatos.colonia','candidatos.codigoPostal','candidatos.especialidad','candidatos.user_id','users.correo')
        ->join('users','candidatos.user_id','=','users.id')
        ->where('correo', $correo)->get()->first();
        return $candidato;

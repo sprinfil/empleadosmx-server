@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CandidatoController;
+use App\Http\Controllers\CurriculuController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\ExperienciaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacanteController;
@@ -43,4 +45,19 @@ Route::controller(EmpresaController::class)->group(function () {
 
 Route::controller(VacanteController::class)->group(function () {
     Route::get('/vacante/alta','alta');
+    Route::get('/vacante/consulta_empresaid','consulta_empresaid');
+    Route::get('/vacante/filtro_titulo','filtro_titulo');
+    Route::get('/vacante/consulta_id','consulta_id');
+    Route::get('/vacante/modificar','modificar');
+    Route::get('/vacante/eliminar','eliminar');
+});
+
+Route::controller(CurriculuController::class)->group(function () {
+    Route::get('/curriculu/alta','alta');
+    Route::get('/curriculu/modificar','modificar');
+    Route::get('/curriculu/consulta/candidato_id','consulta_candidato_id');
+});
+Route::controller(ExperienciaController::class)->group(function () {
+    Route::get('/expriencias/alta','alta');
+    Route::get('/expriencias/show','show');
 });
