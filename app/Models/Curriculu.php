@@ -18,10 +18,13 @@ class Curriculu extends Model
     static function modificar(
         $candidato_id,
         $descripcion,
-        $info_adicional){
+        $info_adicional,
+        $habilidades
+        ){
         $curriculu = Curriculu::where('candidato_id',$candidato_id)->get()->first();
         $curriculu->descripcion = $descripcion;
         $curriculu->informacionAdicional = $info_adicional;
+        $curriculu->habilidades = $habilidades;
         $curriculu->save();
     }
 

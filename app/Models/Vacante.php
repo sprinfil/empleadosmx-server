@@ -82,4 +82,16 @@ class Vacante extends Model
         $vacante = Vacante::find($id);
         $vacante->delete();
     }
+
+    static function filtro($titulo,$empresa_nombre){
+        /*
+SELECT titulo,fecha_creacion,requisitos,detalles_trabajo,salario,informacion_adicional,empresa_id,empresas.nombre
+FROM vacantes,empresas 
+WHERE vacantes.empresa_id = empresas.id AND titulo LIKE '%' And empresas.nombre LIKE '%'
+        */
+        $vacantes = DB::select('SELECT vacantes.id,titulo,fecha_creacion,requisitos,detalles_trabajo,salario,informacion_adicional,empresa_id,empresas.nombre
+        FROM vacantes,empresas 
+        WHERE vacantes.empresa_id = empresas.id AND titulo LIKE ? and empresas.nombre LIKE ?',[$titulo."%",$empresa_nombre."%"]);
+        return $vacantes;
+    }
 }

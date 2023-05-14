@@ -12,9 +12,10 @@ class CurriculuController extends Controller
         Curriculu::alta($request->candidato_id);
      }
      public function modificar(Request $request){
-        Curriculu::modificar($request->candidato_id,$request->descripcion,$request->info_adicional);
+        Curriculu::modificar($request->candidato_id,$request->descripcion,$request->info_adicional,$request->habilidades);
      }
      public function consulta_candidato_id(Request $request){
         return Curriculu::consulta_candidato_id($request->candidato_id);
      }
+
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('descripcion')->nullable();
             $table->text('informacionAdicional')->nullable();
-
+            $table->text('habilidades')->nullable();
             $table->foreignId('candidato_id')->constrained();
             $table->timestamps();
 

@@ -50,6 +50,7 @@ Route::controller(VacanteController::class)->group(function () {
     Route::get('/vacante/consulta_id','consulta_id');
     Route::get('/vacante/modificar','modificar');
     Route::get('/vacante/eliminar','eliminar');
+    Route::get('/vacante/filtro','filtro');
 });
 
 Route::controller(CurriculuController::class)->group(function () {
@@ -58,6 +59,9 @@ Route::controller(CurriculuController::class)->group(function () {
     Route::get('/curriculu/consulta/candidato_id','consulta_candidato_id');
 });
 Route::controller(ExperienciaController::class)->group(function () {
-    Route::get('/expriencias/alta','alta');
-    Route::get('/expriencias/show','show');
+    Route::get('/experiencias/alta','alta');
+    Route::get('/experiencias/show','show');
+    Route::get('/experiencias/modificar','modificar');
+    Route::get('/experiencias/consulta_id','consulta_id');
+    Route::get('/experiencias/eliminar','eliminar');
 });

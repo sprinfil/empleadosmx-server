@@ -45,4 +45,8 @@ class VacanteController extends Controller
     static function eliminar(Request $request){
         Vacante::eliminar($request->id);
     }
+
+    static function filtro(Request $request){
+        return Vacante::filtro($request->titulo,$request->empresa_nombre);
+    }
 }
