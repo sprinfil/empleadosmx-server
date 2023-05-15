@@ -43,4 +43,15 @@ class CandidatoController extends Controller
          $request->correo
       );
    }
+
+   public function consulta_postulantes(Request $request){
+      return json_encode(
+         Candidato::consulta_postulantes(
+         $request->vacante_id,
+         $request->empresa_id)
+      );
+   }
+   public function consulta_id(Request $request){
+      return Candidato::consulta_id($request->id);
+  }
 }

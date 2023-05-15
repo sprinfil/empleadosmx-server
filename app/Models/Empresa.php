@@ -47,5 +47,9 @@ class Empresa extends Model
         $empresa->telefono = $telefono;
         $empresa->save();
     }
+    static function consulta_id($id){
+        $empresa = Empresa::where('id',$id)->get()->first();
+        return $empresa;
+    }
 
 }

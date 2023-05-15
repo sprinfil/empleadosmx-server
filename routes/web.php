@@ -7,6 +7,7 @@ use App\Http\Controllers\ExperienciaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacanteController;
+use App\Http\Controllers\AplicacioneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +36,15 @@ Route::controller(CandidatoController::class)->group(function () {
     Route::get('/candidato/modificar','modificar');
     Route::get('/candidato/show','show');
     Route::get('/candidato/consulta','consulta');
+    Route::get('/candidato/consulta_postulantes','consulta_postulantes');
+    Route::get('/candidato/consulta_id','consulta_id');
 });
 
 Route::controller(EmpresaController::class)->group(function () {
     Route::get('/empresa/consulta_correo','consulta_correo');
     Route::get('/empresa/alta','alta');
     Route::get('/empresa/modificar','modificar');
+    Route::get('/empresa/consulta_id','consulta_id');
 });
 
 Route::controller(VacanteController::class)->group(function () {
@@ -64,4 +68,7 @@ Route::controller(ExperienciaController::class)->group(function () {
     Route::get('/experiencias/modificar','modificar');
     Route::get('/experiencias/consulta_id','consulta_id');
     Route::get('/experiencias/eliminar','eliminar');
+});
+Route::controller(AplicacioneController::class)->group(function () {
+    Route::get('/aplicacion/alta','alta');
 });

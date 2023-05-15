@@ -23,6 +23,11 @@ class Candidato extends Model
        return $candidato;
     }
 
+    static function consulta_id($id){
+        $candidato = Candidato::where('id',$id)->get()->first();
+        return $candidato;
+    }
+
     static function alta($user_id){
         $candidato = new Candidato();
         $candidato->user_id = $user_id;
@@ -56,7 +61,7 @@ class Candidato extends Model
 
     static function show(){
         $candidatos = DB::table('candidatos')
-        ->select('nombre','especialidad','correo')
+        ->select('candidatos.id','candidatos.fechaNac','candidatos.apellidoM','candidatos.apellidoP','candidatos.nombre','candidatos.telefono','candidatos.calle','candidatos.colonia','candidatos.codigoPostal','candidatos.especialidad','candidatos.user_id','users.correo')
         ->join('users','candidatos.user_id','=','users.id')->get()->take(20);
         return $candidatos;
     }
@@ -68,12 +73,31 @@ class Candidato extends Model
           AND especialidad like '%'  
         */
 
-        $candidatos = DB::select('SELECT nombre, especialidad,correo 
+        $candidatos = DB::select('SELECT candidatos.id,nombre, especialidad,correo 
         FROM candidatos,users
         WHERE candidatos.user_id = users.id and 
         nombre LIKE ?
         and especialidad LIKE ?
         and correo LIKE ?',[$nombre.'%',$especialidad.'%',$correo.'%']);
+        return $candidatos;
+    }
+    static function consulta_postulantes($vacante_id,$empresa_id){
+        /* 
+        SELECT candidatos.id,candidatos.fechaNac,candidatos.apellidoP,candidatos.apellidoM,candidatos.nombre,candidatos.telefono,candidatos.calle,candidatos.colonia,candidatos.codigoPostal,candidatos.especialidad,candidatos.user_id,users.correo
+        FROM aplicaciones,vacantes,candidatos,users
+        WHERE aplicaciones.vacante_id = vacantes.id
+        and aplicaciones.candidato_id = candidatos.id AND candidatos.user_id = users.id 
+        AND vacantes.id = 3
+        AND empresa_id = 3
+
+        */
+
+        $candidatos = DB::select('SELECT candidatos.id,candidatos.fechaNac,candidatos.apellidoP,candidatos.apellidoM,candidatos.nombre,candidatos.telefono,candidatos.calle,candidatos.colonia,candidatos.codigoPostal,candidatos.especialidad,candidatos.user_id,users.correo
+        FROM aplicaciones,vacantes,candidatos,users
+        WHERE aplicaciones.vacante_id = vacantes.id
+        and aplicaciones.candidato_id = candidatos.id AND candidatos.user_id = users.id 
+        AND vacantes.id = ?
+        AND empresa_id = ?',[$vacante_id,$empresa_id]);
         return $candidatos;
     }
 }
