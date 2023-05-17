@@ -80,6 +80,7 @@ class Vacante extends Model
 
     static function eliminar($id){
         $vacante = Vacante::find($id);
+        Aplicacione::where('vacante_id',$id)->delete();
         $vacante->delete();
     }
 
