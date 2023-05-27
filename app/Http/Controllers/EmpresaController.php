@@ -33,4 +33,8 @@ class EmpresaController extends Controller
          $request->telefono
       );
      }
+
+     public function actualizar_num_aplicantes(Request $request){
+         Empresa::actualizar_num_aplicantes($request->id,$request->num_aplicantes);
+     }
 }

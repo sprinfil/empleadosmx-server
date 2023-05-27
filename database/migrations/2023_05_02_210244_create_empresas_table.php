@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->string('telefono')->nullable();
             $table->foreignId('user_id')->constrained();
+            $table->unsignedInteger('num_aplicantes')->nullable();
             $table->timestamps();
 
             $table->index('nombre');

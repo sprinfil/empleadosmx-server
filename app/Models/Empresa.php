@@ -17,7 +17,7 @@ class Empresa extends Model
              WHERE empresas.user_id = users.id and correo = 'cactus@hotmail.com'
         */
                 $candidato = DB::table('empresas')
-               ->select('empresas.id','nombre','calle','colonia','codigoPostal','descripcion','telefono','user_id')
+               ->select('empresas.id','nombre','calle','colonia','codigoPostal','descripcion','telefono','user_id','num_aplicantes')
                ->join('users','empresas.user_id','=','users.id')
                ->where('correo', $correo)->get()->first();
                return $candidato;
@@ -26,6 +26,7 @@ class Empresa extends Model
             static function alta($user_id){
                 $empresa = new Empresa();
                 $empresa->user_id = $user_id;
+                $empresa->num_aplicantes = 0;
                 $empresa->save();
             }
 
@@ -50,6 +51,11 @@ class Empresa extends Model
     static function consulta_id($id){
         $empresa = Empresa::where('id',$id)->get()->first();
         return $empresa;
+    }
+    static function actualizar_num_aplicantes($id,$num_aplicantes){
+        $empresa = Empresa::where('id',$id)->get()->first();
+        $empresa->num_aplicantes = $num_aplicantes;
+        $empresa->save();
     }
 
 }

@@ -45,6 +45,7 @@ Route::controller(EmpresaController::class)->group(function () {
     Route::get('/empresa/alta','alta');
     Route::get('/empresa/modificar','modificar');
     Route::get('/empresa/consulta_id','consulta_id');
+    Route::get('/empresa/actualizar_num_aplicantes','actualizar_num_aplicantes');
 });
 
 Route::controller(VacanteController::class)->group(function () {
@@ -71,4 +72,7 @@ Route::controller(ExperienciaController::class)->group(function () {
 });
 Route::controller(AplicacioneController::class)->group(function () {
     Route::get('/aplicacion/alta','alta');
+    Route::get('/aplicacion/postulaciones','postulaciones');
+    Route::get('aplicaciones/checar_nuevos_candidatos','checar_nuevos_candidatos');
+    Route::get('aplicaciones/eliminar_aplicacion','eliminar_aplicacion');
 });

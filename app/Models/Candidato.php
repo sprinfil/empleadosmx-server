@@ -24,7 +24,15 @@ class Candidato extends Model
     }
 
     static function consulta_id($id){
-        $candidato = Candidato::where('id',$id)->get()->first();
+        /* 
+         SELECT candidatos.id,nombre,apellidoM,apellidoP,telefono,calle,fechaNac,colonia,codigoPostal,especialidad,correo FROM candidatos,users
+ WHERE candidatos.user_id = users.id
+ AND candidatos.id = 1
+        */
+        $candidato = DB::table('candidatos')
+        ->select('candidatos.id','candidatos.fechaNac','candidatos.apellidoM','candidatos.apellidoP','candidatos.nombre','candidatos.telefono','candidatos.calle','candidatos.colonia','candidatos.codigoPostal','candidatos.especialidad','candidatos.user_id','users.correo')
+        ->join('users','candidatos.user_id','=','users.id')
+        ->where('candidatos.id', $id)->get()->first();
         return $candidato;
     }
 
