@@ -6,6 +6,7 @@ use App\Models\Candidato;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CandidatoController extends Controller
 {
@@ -53,5 +54,26 @@ class CandidatoController extends Controller
    }
    public function consulta_id(Request $request){
       return Candidato::consulta_id($request->id);
+  }
+  public function modificarImagen(Request $request)
+  {
+      $id = $request['id'];
+      $imagen = $request->file('imagen');
+      $candidato = Candidato::where('id',$id)->get()->first();
+
+      if ($candidato){
+            if($imagen){
+                  Storage::putFileAs('public',$request->file('imagen'),
+                  'imagenes/'.$request->id.'.jpg');
+                  return "ok";
+            }
+         return "no hay imagen"; 
+         
+      }
+      return "no hay candidato";
+  }
+
+  public function hola(Request $request){
+   return "hola";
   }
 }

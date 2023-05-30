@@ -38,6 +38,9 @@ Route::controller(CandidatoController::class)->group(function () {
     Route::get('/candidato/consulta','consulta');
     Route::get('/candidato/consulta_postulantes','consulta_postulantes');
     Route::get('/candidato/consulta_id','consulta_id');
+    Route::post('/candidato/modificarImagen','modificarImagen');
+    Route::get('/candidato/modificarImagen','modificarImagen');
+    Route::get('/candidato/hola','hola');
 });
 
 Route::controller(EmpresaController::class)->group(function () {
