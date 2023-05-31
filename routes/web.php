@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacanteController;
 use App\Http\Controllers\AplicacioneController;
+use App\Http\Middleware\VerifyCsrfToken;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,7 @@ Route::controller(CandidatoController::class)->group(function () {
     Route::get('/candidato/consulta','consulta');
     Route::get('/candidato/consulta_postulantes','consulta_postulantes');
     Route::get('/candidato/consulta_id','consulta_id');
-    Route::post('/candidato/modificarImagen','modificarImagen');
+    Route::post('/candidato/modificarImagen','modificarImagen')->withoutMiddleware(VerifyCsrfToken::class);
     Route::get('/candidato/modificarImagen','modificarImagen');
     Route::get('/candidato/hola','hola');
 });
